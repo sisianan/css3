@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .demo{
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        position: absolute;
+        left: calc(50% - 50px);
+        top: calc(50% - 50px);
+        background-color: transparent;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, .2);
+        transition: all .6s;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 100px;
+        text-align: center;
+    }
+    .demo:hover{
+        transform: scale(1.25,1.25);
+        box-shadow: 0 0 8px 2px rgba(0, 0, 0, .6);
+        color: #f40;
+        border-radius: 50%;
+    }
+    </style>
+</head>
+<body>
+    <div class="demo">hover!</div>
+</body>
+</html>

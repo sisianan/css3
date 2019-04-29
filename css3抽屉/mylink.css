@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+html,
+body,
+div.wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+}
+div.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.box {
+    width: 80%;
+    height: 80%;
+    border: 1px solid transparent;
+}
+div.box ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+div.box ul li {
+    box-sizing: border-box;
+    margin: 0 5px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.3s linear, width 0.5s 0.3s;
+}
+div.box ul li div.img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    animation-name: toTop;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+}
+div.box ul li div.img div.mask {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200, 200, 200, 0.3);
+    border-radius: 30px;
+    transition: all 0.5s;
+    pointer-events: none;
+}
+div.box ul li div.img div.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+div.box ul li div.img div.title span {
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 1);
+    white-space: nowrap;
+    transition: all 0.5s;
+}
+div.box ul li div.img div.error {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    margin: 40px 40px;
+    display: none;
+}
+
+div.box ul li div.img div.error::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    transform: rotate(45deg);
+}
+div.box ul li div.img div.error::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    transform: rotate(-45deg);
+}
+div.box ul li:hover div.img div.mask {
+    opacity: 0;
+}
+div.box ul li:hover div.img div.title span {
+    font-size: 24px;
+}
+div.box ul li:nth-of-type(1) div.img {
+    background-image: url(http://img.zcool.cn/community/0167cc5574edc90000004383d548e1.jpg@2o.jpg);
+    animation-delay: 0.1s;
+}
+div.box ul li:nth-of-type(2) div.img {
+    background-image: url(http://www.005.tv/uploads/allimg/170313/10360C323-6.jpg);
+    animation-delay: 0.2s;
+}
+
+div.box ul li:nth-of-type(3) div.img {
+    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542391929959&di=0c888b8eaaede747b003a820946be7d2&imgtype=0&src=http%3A%2F%2Fp3.gexing.com%2FG1%2FM00%2F23%2F9E%2FrBACFFN_7GqRBO6eAAQVfT4aXlI085.jpg);
+    animation-delay: 0.3s;
+}
+
+div.box ul li:nth-of-type(4) div.img {
+    background-image: url(http://it.people.com.cn/mediafile/200811/27/F200811271534241016924534.jpg);
+    animation-delay: 0.4s;
+}
+
+div.box ul li:nth-of-type(5) div.img {
+    background-image: url(http://img06.tooopen.com/images/20160820/tooopen_sy_176118813563.jpg);
+    animation-delay: 0.5s;
+}
+
+div.box ul li:nth-of-type(6) div.img {
+    background-image: url(http://www.zcool.com.cn/community/037618659e99623a801216a4b289282.jpg);
+    animation-delay: 0.6s;
+}
+
+@keyframes toTop {
+    0% {
+        transform: translate3d(0, 100%, 0);
+
+
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+
+
+    }
+}

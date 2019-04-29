@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        div.wrapper {
+            margin: 100px auto;
+            width: 800px;
+        }
+
+        div.wrapper ul {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        div.wrapper ul li {
+            width: 200px;
+            padding: 20px;
+            height: 200px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        div.wrapper ul li div.box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform-origin: center;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        div.wrapper ul li div.box div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        div.wrapper ul li div.text {
+            background: #111;
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateZ(100px);
+        }
+
+        div.wrapper ul li div.img img {
+            width: 100%;
+            height: 100%;
+            transform: translateZ(-100px);
+        }
+        div.wrapper ul li>div.intop {
+            animation-name: intop;
+        }
+        div.wrapper ul li>div.outtop {
+            animation-name: outtop;
+        }
+        div.wrapper ul li>div.intop div.img {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        @keyframes intop {
+            0% {
+                transform: rotateX(0deg)
+            }
+            100% {
+                transform: rotateX(-90deg);
+            }
+        }
+        @keyframes outtop {
+            0% {
+                transform: rotateX(-90deg);
+            }
+            100% {
+                transform: rotateX(0deg);
+            }
+        }
+        div.wrapper ul li>div.outtop div.img {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        div.wrapper ul li>div.inright {
+            animation-name: inright;
+        }
+        div.wrapper ul li>div.outright {
+            animation-name: outright;
+        }
+        div.wrapper ul li>div.inright div.img {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        div.wrapper ul li>div.outright div.img {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        @keyframes inright {
+            0% {
+                transform: rotateY(0deg)
+            }
+            100% {
+                transform: rotateY(-90deg);
+            }
+        }
+        @keyframes outright {
+            0% {
+                transform: rotateY(-90deg);
+            }
+            100% {
+                transform: rotateY(0deg);
+            }
+        }
+        div.wrapper ul li>div.inleft {
+            animation-name: inleft;
+
+        }
+        div.wrapper ul li>div.outleft {
+            animation-name: outleft;
+        }
+        div.wrapper ul li>div.inleft div.img {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        div.wrapper ul li>div.outleft div.img {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        @keyframes inleft {
+            0% {
+                transform: rotateY(0deg)
+            }
+            100% {
+                transform: rotateY(90deg);
+            }
+        }
+        @keyframes outleft {
+            0% {
+                transform: rotateY(90deg);
+            }
+            100% {
+                transform: rotateY(0deg);
+            }
+        }
+        div.wrapper ul li>div.inbottom {
+            animation-name: inbottom;
+        }
+        div.wrapper ul li>div.outbottom {
+            animation-name: outbottom;
+        }
+
+        div.wrapper ul li>div.inbottom div.img {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        div.wrapper ul li>div.outbottom div.img {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        @keyframes inbottom {
+            0% {
+                transform: rotateX(0deg)
+            }
+            100% {
+                transform: rotateX(90deg);
+            }
+        }
+        @keyframes outbottom {
+            0% {
+                transform: rotateX(90deg);
+            }
+            100% {
+                transform: rotateX(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul>
+            <li>
+                <div class="box">
+                    <div class="img">
+                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542607270398&di=8f7d87af26a0b0a83e5cdbfb0a97116f&imgtype=0&src=http%3A%2F%2Fpic42.photophoto.cn%2F20170120%2F1155116324741871_b.jpg"
+                            alt="">
+                    </div>
+                    <div class="text">sea</div>
+                </div>
+            </li>
+            <li>
+                <div class="box">
+                    <div class="img">
+                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542607573078&di=269bdb63703bfad483b8f1bef2f3f90e&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ea4c59b7f874a801207534a08f9f.jpg%401280w_1l_2o_100sh.jpg"
+                            alt="">
+                    </div>
+                    <div class="text">sky</div>
+                </div>
+            </li>
+            <li>
+                <div class="box">
+                    <div class="img">
+                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542607715803&di=0c00e83e425dc84b6cf72647dc8b9538&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D1842966650%2C2909098930%26fm%3D214%26gp%3D0.jpg"
+                            alt="">
+                    </div>
+                    <div class="text">earth</div>
+                </div>
+            </li>
+            <li>
+                <div class="box">
+                    <div class="img">
+                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542607779920&di=5aa95331c75148be81745e65ee2bed55&imgtype=0&src=http%3A%2F%2Fpic38.photophoto.cn%2F20160227%2F1155117137470080_b.jpg"
+                            alt="">
+
+                    </div>
+                    <div class="text">forest</div>
+                </div>
+            </li>
+            <li>
+                <div class="box">
+                    <div class="img">
+                        <img src="http://img.pconline.com.cn/images/upload/upc/tx/photoblog/1412/03/c2/201450_1417617473934_mthumb.jpg"
+                            alt="">
+                    </div>
+                    <div class="text">mountain</div>
+                </div>
+            </li>
+            <li>
+                <div class="box">
+                    <div class="img">
+                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542607977174&di=ee31eefd7df26365a394a32fd7415fbe&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F017c8559b53c29a8012028a9bf7f5e.jpg%401280w_1l_2o_100sh.jpg"
+                            alt="">
+                    </div>
+                    <div class="text">cosmos</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script>
+
+        window.onload = function () {
+            var lis = document.querySelectorAll('div.wrapper ul li');
+            var div,enter,leave;
+            var myAnimation = {
+                init: function () {
+                    this.bindEvent();
+                },
+                bindEvent: function () {
+                    var that = this;
+                    for (var i = 0; i < lis.length; i++) {
+                        lis[i].addEventListener('mouseenter', function (e) {                    
+                            that.getDom(this);
+                            that.getDirection(e);
+                            div.className = 'box ' + enter;
+                        });
+                        lis[i].addEventListener('mouseleave', function () {
+                            div.className = 'box ' + leave;                                                      
+                        })
+                    };
+                },
+                getDom: function (dom) {
+                    var arr = dom.childNodes;
+                    for (var i = 0; i < arr.length; i++) {
+                        if (arr[i].nodeName != 'DIV') {
+                            continue;
+                        } else {
+                            div = arr[i];
+                            this.getCenter(div);                            
+                        }
+                    }
+                },
+                getCenter:function(dom){
+                     this.x = dom.offsetWidth/2;
+                     this.y = dom.offsetHeight/2;
+                },
+                getDirection:function(e){
+                   var x = e.offsetX - this.x;
+                   var y = e.offsetY - this.y;
+                   var dir = Math.round(((Math.atan2(y,x)*(180/Math.PI) + 180)/90 + 3) )% 4;
+                   switch(dir){
+                       case 0 :{
+                        enter = 'intop';
+                        leave = 'outtop';
+                        break;
+                       }
+                       case 1 :{
+                        enter = 'inright';
+                        leave = 'outright';
+                        break;
+                       }
+                       case 2 :{
+                        enter = 'inbottom';
+                        leave = 'outbottom';
+                        break;
+                       }  
+                       case 3 :{
+                        enter = 'inleft';
+                        leave = 'outleft';
+                        break;
+                       }
+                   };
+                },
+            }
+
+            myAnimation.init();
+
+
+
+
+
+
+
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        div.demo {
+            width: 500px;
+            height: 700px;
+            
+            left: 200px;
+            position: absolute;
+            padding: 20px;
+        }
+
+        div.zhong {
+            width: 500px;
+            height: 500px;
+            background-image: url(图片1.jpg);
+            background-size: 100% 100%;
+            transition: all 0.5s;
+            overflow: hidden;
+            position: absolute;
+           
+        }
+
+        div.mouse {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            left: -150px;
+            background: gray;
+            opacity: 0.5;
+            pointer-events: none;       
+                                        
+        }
+        /* 关键属性pointer-events，没使用前导致放大镜镜片那个div频繁闪动，猜测是因为我在它的父元素上设置mousemove事件，而这个元素也对应的发生mousemove事件
+           使用后这个元素的move事件取消了，网上解释为这个元素对于事件来说相当于一个海市蜃楼，摸不着也点不着 */
+        div.xiao {
+            width: 500px;
+            height: 200px;
+          
+            position: absolute;
+            top: 520px;
+
+        }
+
+        div.xiao ul li {
+            float: left;
+            margin-left: 50px;
+            margin-top: 20px;
+        }
+
+        div.xiao ul li:hover img {
+            border: 2px solid #f40;
+        }
+
+        div.xiao ul li img {
+            width: 100px;
+            height: 100px;
+            border: 2px solid transparent;
+
+
+        }
+        div.big{
+            width: 500px;
+            height: 500px;
+            background-image: url(图片1.jpg);
+         
+           
+            position: absolute;
+            left: 560px;
+            top: 20px;
+            background-repeat: no-repeat;
+          
+            opacity: 0;
+            transition-property:opacity;
+            transition-duration: 0.5s;
+            background-size: 340% 340%;
+            
+            
+        }
+         /* transition-property属性规定这个元素的哪个属性设置过渡效果
+         transition-duration属性规定这个元素设置过渡效果的持续时间
+         这里的background-repeat：no-repeat 是规定元素背景图片不重复 当背景图片宽或高比元素小时，对应方向的背景图片就会重复展示
+         这里的background-size是规定背景图片的在这个元素上的大小，X和Y参数，背景图片可以按比例放大也可以按比例缩小 , 这个属性注意和background-position的区分，这个是
+         规定背景图片在元素上哪个位置开始布置，并不会改变背景图片的大小，还有个background-origin，这个是规定背景图片在这个元素上从border,padding,还是content盒子的左上角开始渲染
+         但border区域不显示背景图片，即使设置border-box*/
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <div class="zhong">
+                <div class="mouse">
+
+                    </div>   
+        </div>
+        
+            <div class="xiao">
+                <ul>
+                    <li class="smallimg"> <img src="图片1.jpg" alt="">
+                    </li>
+                    <li class="smallimg"><img src="图片2.jpg" alt="">
+                    </li>
+                    <li class="smallimg"><img src="图片3.jpg" alt=""></li>
+                </ul>
+          
+    </div>
+
+    <div class="big">
+
+    </div>
+
+
+
+
+        </div>
+        <!-- <div class="da"> 
+        <img src="图片1.jpg" alt="">
+        <img src="图片2.jpg" alt="">
+        <img src="图片3.jpg" alt="">
+    </div> -->
+</body>
+<script> 
+    var imgarr = ['图片1.jpg', '图片2.jpg', '图片3.jpg'];                            //将需要展示的大图，小图放在一个数组，方便用下标进行获取
+    var div = document.getElementsByClassName('zhong')[0];                          //因为这里没有对应的大图，所以只创建了一个数组放小图
+    var li = document.getElementsByClassName('smallimg');
+    var mouse = document.getElementsByClassName('mouse')[0];
+    var big = document.getElementsByClassName('big')[0];
+    var liArr = [].slice.call(li);
+    liArr.forEach(function (ele, index, self) {
+        ele.addEventListener('mouseenter', function () {
+            div.style.backgroundImage = 'url(' + imgarr[index] + ')';                 
+            big.style.backgroundImage = 'url(' + imgarr[index] + ')';
+        });
+
+    });
+    div.addEventListener('mousemove', function (e) {
+        console.log('父亲触发事件');
+          big.style.opacity = 1;
+          var el = e.offsetX;             
+          var et = e.offsetY;
+          var ml = mouse.offsetLeft;
+          var mt = mouse.offsetTop;
+          mouse.onmousemove = function(){
+              console.log('事件往下走了');
+          }
+         
+          mouse.style.left = el - 75 + 'px';                //75是这个放大镜镜片一半的宽度和高度，目的是让鼠标在盒子中间
+          mouse.style.top = et - 75 + 'px';
+          
+          if(el <= 75){                                                
+              mouse.style.left = 0;
+              
+          }  
+          if(et <= 75){
+              mouse.style.top = 0;   
+              }                                              //规定mousediv的边界，不能里边留一半外边留一半
+          if(el >= 425){
+              mouse.style.left = 350 + 'px';
+          }
+          if(et >= 425){
+            mouse.style.top =  350 + 'px'; 
+          } 
+          big.style.backgroundPositionX = ''+ -ml*3.4 + 'px';                            //因为背景图片放大了(展示区域的宽高/放大镜镜片的宽高)的比例，那个bigdiv就相当于这个mousediv，
+                                                                                         //mousediv在小图片里移动了多少，bigdiv就要在大图片里移动对应比例的X和Y,这里用background-positon
+                                                                                         //来控制bigdiv里背景图片的渲染位置，因为是背景图片的移动而不是div的移动，所以bigdiv的方向应该是反着的
+                                                                                         
+          big.style.backgroundPositionY = ''+ -mt*3.4 + 'px';
+    });
+    div.addEventListener('mouseout',function(){
+        big.style.opacity = 0;
+        mouse.style.left = -150 + 'px';
+    })
+
+
+
+
+
+
+
+</script>
+
+</html>
